@@ -1,7 +1,7 @@
 This is an Express application template, it comes with the following features and resources already setup:
 
 =======BACKEND=====
-.....Database Setup (local and remote)
+.....Database Setup (local and remote)__
 .....PassportJS (local login)
 .....User model
 .....Authentication(login, signup, logout, passwordReset, password-forgot)

@@ -38,9 +38,6 @@ app.use(flash());
 // SETTING CURRENT USER & FLASH 
 app.use(function(req, res, next){
 	res.locals.currentuser = req.user;
-	// res.locals.success = req.flash('progress');
-	// res.locals.info = req.flash('info');
-	// res.locals.errors = req.flash('errors');
 	next();
 });
 
@@ -52,10 +49,12 @@ app.use(express.static(__dirname + '/public'));
 
 // MODELS
 require('./app/models/user');
+require('./app/models/note');
 
 // ROUTES
 app.use(require('./app/routes'));
 app.use(require('./app/routes/auth'));
+app.use(require('./app/routes/note'));
 
 // ERROR HANDLING
 require('./app/config/error-handlers')(app);

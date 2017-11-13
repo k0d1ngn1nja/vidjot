@@ -1,11 +1,9 @@
 "use strict";
-const pageTitle = "JustSellIt";
 const mongoose = require('mongoose');
 const passport = require('passport');
 const passportConfig = require('../config/passport');
 const config = require('../config');
 const User = mongoose.model('User');
-const appName = "JustSellIt";
 const mailer = require('nodemailer');
 const async = require('async');
 const crypto = require('crypto');

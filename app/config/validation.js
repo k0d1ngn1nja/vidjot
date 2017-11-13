@@ -1,5 +1,6 @@
 "use strict";
 const User = require('../models/user');
+const Note = require('../models/note');
 
 function validateSignup(req, res, next){
 	req.checkBody('username', 'Username is required').notEmpty();
@@ -81,9 +82,28 @@ function validatedResetPwd(req, res, next){
 	}
 }
 
+function validateNewNote(req, res, next){
+	req.checkBody('title','Title must be provided').notEmpty();
+	req.checkBody('description','Description must be provided').notEmpty();
+
+	let errors = req.validationErrors();
+	if(errors){
+		let msgs = [];
+		errors.forEach(function(err) {
+			msgs.push(err.msg);
+		});
+
+		req.flash('errors', msgs);
+		res.redirect('/notes/new');
+	} else {
+		next();
+	}
+}
+
 module.exports = {
 	validateSignup,
 	validateLogin,
 	validatedResetPwd,
-	validatedForgotPwd
+	validatedForgotPwd,
+	validateNewNote
 }

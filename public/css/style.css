@@ -36,11 +36,6 @@ p{
 	text-transform: uppercase;
 }
 
-.alert-danger{
-	background-color: #6c1c25;
-	color: #fff;
-}
-
 section{
 	padding-top: 50px;
 	padding-bottom: 30px;
@@ -53,26 +48,14 @@ section{
 .header-btns a:hover{
 	color: yellow;
 }
+
+
 /*================
-LOGIN & SIGNUP PAGE
+FORM STYLING
 =================*/
 .myform{
 	color: #000;
 	font-size: 120%;
-}
-
-.myform input[type="email"],
-.myform input[type="text"],
-.myform input[type="password"]{
-	height: 40px;
-	margin: 0;
-	padding: 0 20px;
-	vertical-align: middle;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 50px;
-	color: #000;
-	outline: none;
 }
 
 .myform input[type="text"],
@@ -89,6 +72,15 @@ LOGIN & SIGNUP PAGE
 	color: #000;
 	border-radius: 0px;
 	outline: none;
+}
+
+.myform textarea{
+	padding-top: 10px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  border-radius: 0;
 }
 
 .login_icon{

@@ -1,0 +1,36 @@
+<section>
+	<div class="container">		
+		<div class="row">
+			<% include ../flash/errors %>
+			
+			<div class="col-md-7">
+				<h1 class="page-header">Sign in</h1>
+				<div class="myform">
+					<form action="/login" method="post" accept-charset="utf-8">
+						<div class="form-group">
+					    <label for="email">Email</label>
+					    <input type="text" class="form-control" name="email" autofocus>
+					  </div>
+
+					  <div class="form-group">
+					    <label for="password">Password</label>
+					    <input type="password" class="form-control" name="password" autofocus>
+					  </div>
+
+					  <button type="submit" class="btn btn-primary">Submit</button>
+					</form><br>
+					<div>
+						<h5 class="pull-left">Don't have an account? <a href="/signup">Sign Up</a></h5>
+						<h5 class="pull-right"><a href="/forgotpassword">Forgot Your Password?</a></h5>
+					</div>
+				</div>
+			</div><!--/col-->
+
+			<div class="col-md-5">
+				<div class="login_icon">
+					<i class="fa fa-lock"></i>
+				</div>
+			</div><!--/col-->
+		</div><!--/row-->
+	</div><!--/container-->
+</section>

@@ -1,0 +1,43 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<% include ../flash/errors %>
+			<% include ../flash/success %>
+			
+			<div class="col-md-5" style="padding-top: 80px;">
+				<div class="login_icon">
+					<i class="fa fa-user-plus"></i>
+				</div>
+			</div><!--/col-->
+
+			<div class="col-md-7">
+				<h1 class="page-header">Register</h1>
+				<div class="myform">
+					<form action="/signup" method="post" accept-charset="utf-8">
+						<div class="form-group">
+					    <label for="username">Username</label>
+					    <input type="text" class="form-control" name="username" autofocus>
+					  </div>
+						
+						<div class="form-group">
+					    <label for="email">Email</label>
+					    <input type="email" class="form-control" name="email" autofocus>
+					  </div>
+
+					  <div class="form-group">
+					    <label for="password">Password</label>
+					    <input type="password" class="form-control" name="password">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="password">Password Confirmation</label>
+					    <input type="password" class="form-control" name="confirm_password">
+					  </div>
+						<br>
+					  <button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div><!--/col-->
+		</div><!--/row-->
+	</div><!--/container-->
+</section>

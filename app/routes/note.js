@@ -9,6 +9,8 @@ router.get('/notes', noteCntrl.index);
 
 router.get('/notes/new', noteCntrl.new);
 
+router.get('/notes/:id/edit', noteCntrl.edit);
+
 router.post('/notes', v.validateNewNote, noteCntrl.create);
 
 module.exports = router;

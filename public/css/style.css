@@ -49,7 +49,16 @@ section{
 	color: yellow;
 }
 
+a {
+	color: #000;
+	text-decoration: none;
+}
 
+a:hover, a:focus{
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;			
+}
 /*================
 FORM STYLING
 =================*/

@@ -1,10 +1,16 @@
 "use strict";
 const mongoose = require('mongoose');
 const Note = mongoose.model('Note');
+const truncate = require('truncate');
 
 let noteCntrl = {
 	index: function(req, res, next){
-		res.render('note/index');
+		Note.find({}).sort({createdAt: 'desc'})
+			.then((notes) =>{
+				res.render('note/index', {notes});	
+			}).catch((err) =>{
+
+			});
 	},
 
 	new: function(req, res, next){

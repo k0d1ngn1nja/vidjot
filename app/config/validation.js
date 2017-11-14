@@ -100,10 +100,42 @@ function validateNewNote(req, res, next){
 	}
 }
 
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  req.session.oldUrl = req.url;
+  req.flash('errors', 'Please login to continue.');
+  res.redirect('/login');
+}
+
+function isCreator(req, res, next){
+	let noteID = req.params.id;
+
+	if(req.isAuthenticated()){
+		Note.findById(noteID, (err, note) =>{
+			if(err || !note){
+				req.flash('errors', "Note not found");
+				return res.redirect('/');
+			} else if(note.owner.equals(req.user._id)){
+				next();
+			} else {
+				req.flash('errors', "Unauthorized action!");
+				res.redirect("/");
+			}
+		});
+	} else {
+		req.flash('errors', 'You need to be logged-in to perform this action.');
+		res.redirect('back');
+	}
+}
+
 module.exports = {
 	validateSignup,
 	validateLogin,
 	validatedResetPwd,
 	validatedForgotPwd,
-	validateNewNote
+	validateNewNote,
+	isLoggedIn,
+	isCreator
 }

@@ -5,14 +5,16 @@ const Note = mongoose.model('Note');
 const v = require('../config/validation');
 const noteCntrl = require('../controllers/note');
 
-router.get('/notes', noteCntrl.index);
+router.get('/notes', v.isLoggedIn, noteCntrl.index);
 
-router.get('/notes/new', noteCntrl.new);
+router.get('/notes/new', v.isLoggedIn, noteCntrl.new);
 
-router.get('/notes/:id/edit', noteCntrl.edit);
+router.get('/notes/:id/edit', v.isLoggedIn, v.isCreator, noteCntrl.edit);
 
-router.put('/notes/:id', noteCntrl.update);
+router.put('/notes/:id', v.isLoggedIn, v.isCreator, noteCntrl.update);
 
-router.post('/notes', v.validateNewNote, noteCntrl.create);
+router.post('/notes', v.validateNewNote, v.isLoggedIn, noteCntrl.create);
+
+router.delete('/notes/:id', v.isLoggedIn, v.isCreator, noteCntrl.delete);
 
 module.exports = router;

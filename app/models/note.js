@@ -14,6 +14,11 @@ let NoteSchema = new Schema({
 		type: String,
 		required: [true, "Note description required"],
 		minlength: 10
+	},
+
+	owner: {
+		type: Schema.Types.ObjectId,
+		ref: 'User'
 	}
 }, {timestamps: true});
 

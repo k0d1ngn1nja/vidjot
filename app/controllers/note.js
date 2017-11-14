@@ -6,7 +6,7 @@ let noteCntrl = {
 	index: function(req, res, next){
 		let errors = req.flash('errors');
 
-		Note.find({}).sort({createdAt: 'desc'})
+		Note.find({owner: req.user._id}).sort({createdAt: 'desc'})
 			.then((notes) =>{
 				res.render('note/index', {notes, errors});	
 			}).catch((err) =>{
@@ -25,6 +25,7 @@ let noteCntrl = {
 		let success = req.flash('progress');
 
 		let new_note = new Note();
+		new_note.owner = req.user._id;
 		new_note.title = req.body.title;
 		new_note.description = req.body.description;
 
@@ -61,6 +62,18 @@ let noteCntrl = {
 			}
 			req.flash('progress', `${note.title} has been updated.`);
 			res.redirect(`/notes`);
+		});
+	},
+
+	delete: function(req, res, next){
+		let noteID = req.params.id;
+		Note.findByIdAndRemove(noteID, (err, note) =>{
+			if(err){
+				req.flash('errors', 'Note not found.')
+				return res.redirect('/notes');
+			}
+			req.flash('progress', "Note has been deleted.");
+			res.redirect('/');
 		});
 	}
 }

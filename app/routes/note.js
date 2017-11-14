@@ -11,6 +11,8 @@ router.get('/notes/new', noteCntrl.new);
 
 router.get('/notes/:id/edit', noteCntrl.edit);
 
+router.put('/notes/:id', noteCntrl.update);
+
 router.post('/notes', v.validateNewNote, noteCntrl.create);
 
 module.exports = router;

@@ -10,6 +10,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const SessionStore = require('connect-mongo')(session);
 const ejslayout = require('express-ejs-layouts');
+const methodOverride = require('method-override');
 const passport = require('passport');
 const port = (process.env.PORT || 3000);
 const config = require('./app/config');
@@ -23,6 +24,7 @@ require('./app/db');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 app.use(validator());
 app.use(cookieParser());
 app.use(session({

@@ -45,6 +45,23 @@ let noteCntrl = {
 			req.flash('errors', err);
 			res.redirect('back');
 		});
+	},
+
+	update: function(req, res, next){
+		let noteID = req.params.id;
+		let note = {};
+		note.title = req.body.title;
+		note.description = req.body.description;
+		
+		Note.findByIdAndUpdate(noteID, note, (err, note) =>{
+			if(err){
+				console.log(err);
+				req.flash('errors', err);
+				return res.redirect('back');
+			}
+			req.flash('progress', `${note.title} has been updated.`);
+			res.redirect(`/notes`);
+		});
 	}
 }
 

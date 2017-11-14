@@ -1,7 +1,6 @@
 "use strict";
 const mongoose = require('mongoose');
 const Note = mongoose.model('Note');
-const truncate = require('truncate');
 
 let noteCntrl = {
 	index: function(req, res, next){
@@ -33,6 +32,10 @@ let noteCntrl = {
 			req.flash('errors', err);
 			res.redirect('/notes/new');
 		});
+	},
+
+	edit: function(req, res, next){
+		
 	}
 }
 

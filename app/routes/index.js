@@ -3,7 +3,9 @@ const router = require('express').Router();
 
 router.get('/', (req, res, next) =>{
 	let success = req.flash('progress');
-	res.render('pages/index', {title: "Home || JustSellIt", success});
+	let errors = req.flash('errors');
+	
+	res.render('pages/index', {title: "Home || NoteTaker", success, errors});
 });
 
 router.get('/about', (req, res, next) =>{

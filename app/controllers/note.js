@@ -4,11 +4,14 @@ const Note = mongoose.model('Note');
 
 let noteCntrl = {
 	index: function(req, res, next){
+		let errors = req.flash('errors');
+
 		Note.find({}).sort({createdAt: 'desc'})
 			.then((notes) =>{
-				res.render('note/index', {notes});	
+				res.render('note/index', {notes, errors});	
 			}).catch((err) =>{
-
+				res.flash('errors', err);
+				res.render('pages/index', {errors})
 			});
 	},
 
@@ -35,7 +38,13 @@ let noteCntrl = {
 	},
 
 	edit: function(req, res, next){
-		
+		let noteID = req.params.id;
+		Note.findOne({_id: noteID}).then((note) =>{
+			res.render('note/edit', {note});
+		}).catch((err) =>{
+			req.flash('errors', err);
+			res.redirect('back');
+		});
 	}
 }
 

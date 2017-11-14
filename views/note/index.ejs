@@ -1,14 +1,19 @@
 <section>
 	<div class="container">
 		<div class="row">
+			<% include ../flash/errors %>
+			
 			<% if(notes){ %>
 				<% notes.forEach((note) =>{ %>
-					<a href="#">
-						<div class="col-md-4 well" style="margin-right: 15px;">
+					<div class="col-md-4 well" style="margin-right: 15px;">
+						<a href="#">
 							<h3><%= note.title %></h3>
 							<p><%= note.description %></p>
-						</div>
-					</a>
+						</a>
+						<p>
+							<a href="/notes/<%= note._id%>/edit" class="fa fa-pencil"></a>
+						</p>
+					</div>
 				<% }) %>
 			<%}%>
 		</div>
